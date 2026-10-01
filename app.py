@@ -25,17 +25,6 @@ st.markdown(
 
 # --- Q1 ---------------------------------------------------------------------
 st.header("1. Genre Breakdown")
-st.markdown(
-    """
-**How multi-genre movies are handled:** a movie can be tagged with several genres
-(e.g. *L.A. Confidential* is `Crime|Film-Noir|Mystery|Thriller`). Rather than picking
-one "primary" genre, each movie is counted **once in every genre it belongs to**.
-Each movie is counted only once per genre no matter how many ratings it received.
-Because of this, the genre counts add up to more than the number of movies, so the
-percentages are "share of movies tagged with this genre" and do not sum to 100%.
-Movies whose only genre is `unknown` are excluded.
-"""
-)
 
 movies = df.drop_duplicates("movie_id")[["movie_id", "genre_list"]]
 movies = movies[movies["genre_list"].str.len() > 0]
